@@ -30,14 +30,14 @@ jobs:
       run: npx playwright test
       env:
         PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
-        
+
     - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: ${{ inputs.TESTGROUP }}
-          path: |
-            playwright-report
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: ${{ inputs.TESTGROUP }}
+        path: |
+          playwright-report
     # - uses: actions/upload-artifact@v3
     #   if: always()
     #   with:
