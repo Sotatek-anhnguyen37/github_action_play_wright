@@ -1,4 +1,5 @@
-name: Playwright Tests
+name: Playwright 
+run name: Running on ${{ github.ref_name }} by ${{ github.actor }}
 on:
   push:
     branches: [ main ]
