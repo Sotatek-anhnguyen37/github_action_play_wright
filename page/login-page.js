@@ -12,6 +12,7 @@ export class LoginPage{
         this.ToastWelcomeMessage = this.page.locator('div.chakra-alert__desc').first();
         this.forgotPasswordBtn = this.page.getByText('Forgot your password?');
         this.textNotVerifyMessage = this.page.locator('//p[contains(@class,"chakra-text")]').nth(1);
+        this.toast_message = this.page.locator('div.chakra-alert__desc').first();
     }
     async goto(path){
         await this.page.goto(path);
@@ -41,7 +42,9 @@ export class LoginPage{
     async verifyNotVerifyToastMessageDisplayed(){
         await expect(this.textNotVerifyMessage).toHaveText('That email is not verified. Please check your email first.');
         await expect(this.logInBtn).toBeDisabled();
-
+    }
+    async verifyToastMessage(message){
+        await expect(this.toast_message).toHaveText(message)
     }
     
 }
