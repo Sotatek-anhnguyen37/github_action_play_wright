@@ -13,6 +13,7 @@ export class LoginPage{
         this.forgotPasswordBtn = this.page.getByText('Forgot your password?');
         this.textNotVerifyMessage = this.page.locator('//p[contains(@class,"chakra-text")]').nth(1);
         this.toast_message = this.page.locator('div.chakra-alert__desc').first();
+        this.createBtn = this.page.getByRole('button', {name: 'Create'})
     }
     async goto(path){
         await this.page.goto(path);
@@ -21,6 +22,9 @@ export class LoginPage{
         await this.emailInput.fill(userName);
         await this.passwordInput.fill(password);
         await this.logInBtn.click();
+    }
+    async checkButtonCreateEnable(){
+        await expect(this.createBtn).toBeEnabled()
     }
     async inputUserName(userName){
         await this.emailInput.fill(userName);

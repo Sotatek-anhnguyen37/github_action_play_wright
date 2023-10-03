@@ -9,12 +9,18 @@ test.beforeAll(async ({browser})=>{
     const context = await browser.newContext()
     page = await context.newPage()
 })
-test('test login successful', async ({})=>{
-    const loginPage = new LoginPage(page)
-    await loginPage.goto('https://stg-console.blocklens.io/login')
-    await loginPage.inputCredsAndLogin('anh.nguyen37@sotatek.com', 'Baymax2000@')
-    await loginPage.verifyToastMessage('Welcome to Blocklens!')
-    console.log('111mbn')
+test.describe('check information dashboard', ()=>{
+    test('test login successful', async ({})=>{
+        const loginPage = new LoginPage(page)
+        await loginPage.goto('https://stg-console.blocklens.io/login')
+        await loginPage.inputCredsAndLogin('anh.nguyen37@sotatek.com', 'Baymax2000@')
+        await loginPage.verifyToastMessage('Welcome to Blocklens!')
+        console.log('111mbn')
+    })
+    test('check info default of tab dashboard', async({})=>{
+        const loginPage = new LoginPage(page)
+        await loginPage.checkButtonCreateEnable()
+    })
 })
 test.afterAll(async({})=>{
     await page.close()
