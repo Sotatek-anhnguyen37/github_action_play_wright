@@ -14,6 +14,7 @@ test('test login successful', async ({})=>{
     await loginPage.goto('https://stg-console.blocklens.io/login')
     await loginPage.inputCredsAndLogin('anh.nguyen37@sotatek.com', 'Baymax2000@')
     await loginPage.verifyToastMessage('Welcome to Blocklens!')
+    console.log('111')
 })
 test.afterAll(async({})=>{
     await page.close()
