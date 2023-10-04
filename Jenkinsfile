@@ -17,11 +17,11 @@ agent any
         bat 'npx playwright test --list'
         bat 'npx playwright test'
       }
-      post {
-        success {
-          archiveArtifacts(artifacts: 'playwright-report/index.html', followSymlinks: false)
-          publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'playwright-report', reportFiles: 'index.html', reportName: 'Test Results', reportTitles: '', useWrapperFileDirectly: true])
-        }
+      // post {
+      //   success {
+      //     archiveArtifacts(artifacts: 'playwright-report/index.html', followSymlinks: false)
+      //     publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'playwright-report', reportFiles: 'index.html', reportName: 'Test Results', reportTitles: '', useWrapperFileDirectly: true])
+      //   }
       }
     }
   }
