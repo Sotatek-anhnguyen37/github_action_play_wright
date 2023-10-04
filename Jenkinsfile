@@ -1,19 +1,27 @@
 pipeline {
-  agent any
+agent any
   stages {
-    stage('Install dependencies'){
-        steps{
-            sh 'npm ci'
-        }
-    }
-    stage('Install Playwright Browsers') {
+    stage('install playwright') {
       steps {
-        sh 'npx playwright install --with-deps'
+        bat 'npm i -D @playwright/test'
+        bat 'npx playwright install'
       }
     }
-    stage('Run Playwright tests') {
+    stage('help') {
       steps {
-        sh 'npx playwright test'
+        bat 'npx playwright test --help'
+      }
+    }
+    stage('test') {
+      steps {
+        bat 'npx playwright test --list'
+        bat 'npx playwright test'
+      }
+      post {
+        success {
+          archiveArtifacts(artifacts: 'playwright-report/index.html', followSymlinks: false)
+          publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'playwright-report', reportFiles: 'index.html', reportName: 'Test Results', reportTitles: '', useWrapperFileDirectly: true])
+        }
       }
     }
   }
