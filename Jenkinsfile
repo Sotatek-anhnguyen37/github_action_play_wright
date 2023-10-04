@@ -1,31 +1,20 @@
 pipeline {
+  agent any
   stages {
-    stage('install playwright') {
+    stage('Install dependencies'){
+        steps{
+            sh 'npm ci'
+        }
+    }
+    stage('Install Playwright Browsers') {
       steps {
-        sh '''
-          npm i -D @playwright/test
-          npx playwright install
-        '''
+        sh 'npx playwright install --with-deps'
       }
     }
-    stage('help') {
+    stage('Run Playwright tests') {
       steps {
-        sh 'npx playwright test --help'
+        sh 'npx playwright test'
       }
-    }
-    stage('test') {
-      steps {
-        sh '''
-          npx playwright test --list
-          npx playwright test
-        '''
-      }
-    //   post {
-    //     success {
-    //       archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
-    //       sh 'rm -rf *.png'
-    //     }
-    //   }
     }
   }
 }
