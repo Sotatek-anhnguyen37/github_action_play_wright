@@ -20,6 +20,7 @@ test.describe('check information dashboard', ()=>{
     test('check info default of tab dashboard', async({})=>{
         const loginPage = new LoginPage(page)
         await loginPage.checkButtonCreateEnable()
+        console.log('11111111111111111111111111111111111111111111111111111111 ');
     })
 })
 test.afterAll(async({})=>{
