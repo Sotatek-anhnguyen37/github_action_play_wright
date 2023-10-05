@@ -1,6 +1,6 @@
 pipeline {
   agent any
-  tools {nodejs "20.8.0"}
+  tools {nodejs "18.16.1"}
   stages {
     stage('install playwright') {
       steps {
