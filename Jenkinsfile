@@ -23,8 +23,7 @@ pipeline {
       }
       post {
         success {
-          archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
-          bat 'rm -rf *.png'
+          bat 'echo "hello world"'
         }
       }
     }
