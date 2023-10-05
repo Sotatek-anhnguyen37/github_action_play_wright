@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Oct 05 01:39:26 GMT 2023","Thu Oct 05 01:39:27 GMT 2023","570","chromium","example.spec.js","","","","get started link",""
+"passed","Thu Oct 05 01:39:25 GMT 2023","Thu Oct 05 01:39:26 GMT 2023","831","chromium","example.spec.js","","","","has title",""
+"passed","Thu Oct 05 01:39:31 GMT 2023","Thu Oct 05 01:39:33 GMT 2023","2045","chromium","login.spec.js","check information dashboard","","","check info default of tab dashboard",""
+"passed","Thu Oct 05 01:39:27 GMT 2023","Thu Oct 05 01:39:31 GMT 2023","4628","chromium","login.spec.js","check information dashboard","","","test login successful",""
