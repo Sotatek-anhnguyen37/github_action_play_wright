@@ -1,32 +1,9 @@
 pipeline {
   agent any
-  tools {nodejs "18.16.1"}
   stages {
-    stage('install playwright') {
+    stage('hello') {
       steps {
-        sh '''
-          npm i -D @playwright/test
-          npx playwright install
-          npx playwright install chrome
-        '''
-      }
-    }
-    stage('help') {
-      steps {
-        sh 'npx playwright test --help'
-      }
-    }
-    stage('test') {
-      steps {
-        sh '''
-        npx playwright test tests/insights/login-test.spec.js
-        '''
-      }
-      post {
-        success {
-          archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
-          sh 'rm -rf *.png'
-        }
+        sh 'echo "Hello World"'
       }
     }
   }
