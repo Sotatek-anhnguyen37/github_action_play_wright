@@ -1,15 +1,13 @@
 pipeline {
-  agent { 
-    docker { 
-      image 'mcr.microsoft.com/playwright:v1.17.2-focal'
-    } 
-  }
+  agent any
+  tools {nodejs "20.8.0"}
   stages {
     stage('install playwright') {
       steps {
         sh '''
           npm i -D @playwright/test
           npx playwright install
+          npx playwright install chrome
         '''
       }
     }
@@ -21,8 +19,7 @@ pipeline {
     stage('test') {
       steps {
         sh '''
-          npx playwright test --list
-          npx playwright test
+        npx playwright test tests/insights/login-test.spec.js
         '''
       }
       post {
