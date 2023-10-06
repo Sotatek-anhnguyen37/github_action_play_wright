@@ -1,6 +1,13 @@
 pipeline {
-  agent any
+  agent {
+    docker { image 'node:16-alpine' }
+  }
   stages {
+    stage('node version') {
+      steps {
+        sh 'node --version'
+      }
+    }
     stage('install playwright') {
       steps {
         bat '''
