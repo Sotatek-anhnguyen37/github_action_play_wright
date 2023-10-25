@@ -1,11 +1,13 @@
+import { BasePage } from './base-page';
+
 const { expect } = require('@playwright/test');
 //@ts-check
-export class LoginPage{
+export class LoginPage extends BasePage{
     /**
      * @param {import('@playwright/test').Page} page
      */
     constructor(page) {
-        this.page = page;
+        super(page)
         this.emailInput = this.page.locator('input.chakra-input').first();
         this.passwordInput = this.page.locator('input.chakra-input').nth(1);
         this.logInBtn = this.page.getByRole('button', {name: 'Log in'});
@@ -21,7 +23,7 @@ export class LoginPage{
     async inputCredsAndLogin(userName, password){
         await this.emailInput.fill(userName);
         await this.passwordInput.fill(password);
-        await this.logInBtn.click();
+        // await this.logInBtn.click();
     }
     async checkButtonCreateEnable(){
         await expect(this.createBtn).toBeEnabled()

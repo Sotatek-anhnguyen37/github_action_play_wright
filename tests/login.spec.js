@@ -14,13 +14,12 @@ test.describe('check information dashboard', ()=>{
         const loginPage = new LoginPage(page)
         await loginPage.goto('https://stg-console.blocklens.io/login')
         await loginPage.inputCredsAndLogin('anh.nguyen37@sotatek.com', 'Baymax2000@')
+        await loginPage.clickButtonLogin()
         await loginPage.verifyToastMessage('Welcome to Blocklens!')
-        console.log('111mbn')
     })
     test('check info default of tab dashboard', async({})=>{
         const loginPage = new LoginPage(page)
         await loginPage.checkButtonCreateEnable()
-        console.log('11111111111111111111111111111111111111111111111111111111 ');
     })
 })
 test.afterAll(async({})=>{

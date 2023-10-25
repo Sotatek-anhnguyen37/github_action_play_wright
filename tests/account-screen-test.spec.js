@@ -9,13 +9,14 @@ let account_screen;
 let context;
 const urlOurDocs = "https://docsblocklens.readme.io/reference/overview"
 
-test.beforeAll(async ({ browser }) => {
+test.beforeEach(async ({ browser }) => {
     context = await browser.newContext();
     page = await context.newPage();
 
     loginPage = new LoginPage(page);
     await loginPage.goto('/login');
     await loginPage.inputCredsAndLogin(process.env.BLOCKLEN_USERNAME, process.env.PASSWORD);
+    await loginPage.clickButtonLogin()
 
     account_screen = new AccountScreenPage(page);
     await account_screen.clickCloseToastMessage();
@@ -76,7 +77,7 @@ test.describe('Check information at each field', async()=>{
     })
 })
 
-test.afterAll(async ()=>{
+test.afterEach(async ()=>{
     await page.close();
 })
 

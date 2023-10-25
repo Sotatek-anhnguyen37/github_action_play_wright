@@ -1,11 +1,14 @@
 pipeline {
-  agent { dockerfile true }
+  agent any
+  tools {
+    nodejs "Node"
+  }
   stages {
-    // stage('node version') {
-    //   steps {
-    //     sh 'node --version'
-    //   }
-    // }
+    stage('node version') {
+      steps {
+        sh 'node --version'
+      }
+    }
     stage('install playwright') {
       steps {
         bat '''
@@ -23,13 +26,8 @@ pipeline {
       steps {
         bat '''
           npx playwright test --list
-          npx playwright test
+          npx playwright test --reporter=line, allure-playwright
         '''
-      }
-      post {
-        success {
-          bat 'echo "hello world"'
-        }
       }
     }
   }
