@@ -28,6 +28,7 @@ test.describe("Check initial information", ()=>{
     test("verify display Basic Details", async({})=>{
         await account_screen.verifyLabelOnBasicDetailsIsVisible()
         await account_screen.verifyButtonOnBasicDetailEnable()
+        console.log('111111111111111111111111111')
     })
 
     test("verify information Notifications", async ({})=>{
